@@ -1,7 +1,11 @@
 {
     "name": "brianf/aws-helpers",
     "require": {
-        "aws/aws-sdk-php": "~2.7"
+        "aws/aws-sdk-php": "~2.7",
+        "symfony/console": "~2.6"
+    },
+    "autoload": {
+        "psr-4": { "Bfeaver\\AwsHelper\\": "src/" }
     },
     "license": "MIT",
     "authors": [
