@@ -15,20 +15,18 @@ class S3SignedUrlCommand extends Command
         $this->setName('s3:sign_url')
             ->addArgument('bucket', InputArgument::REQUIRED, 'The bucket name.')
             ->addArgument('object', InputArgument::REQUIRED, 'The object key.')
-            ->addOption(
-                'expires',
-                'e',
-                InputOption::VALUE_OPTIONAL,
-                'The amount of time in minutes before the URL expires.',
-                10
-            );
+            ->addOption('expires', 'e', InputOption::VALUE_OPTIONAL, 'Minutes before the URL expires.', 10);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $client = S3Client::factory(['profile' => 'default']);
 
-        $url = $client->getObjectUrl($input->getArgument('bucket'), $input->getArgument('object'), '+10 minutes');
+        $url = $client->getObjectUrl(
+            $input->getArgument('bucket'),
+            $input->getArgument('object'),
+            sprintf('+%u minutes', $input->getOption('expires'))
+        );
 
         $output->writeln('<info>Signed URL:</info> ' . $url);
     }
