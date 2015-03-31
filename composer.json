@@ -1,0 +1,14 @@
+{
+    "name": "brianf/aws-helpers",
+    "require": {
+        "aws/aws-sdk-php": "~2.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Feaver",
+            "email": "brian.feaver@wisebanyan.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
